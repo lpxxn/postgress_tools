@@ -33,16 +33,16 @@ fn main() {
             //let a: () = row.get(0);
             let i: &str = row.get(0);
             table_comumns.push_str(i);
-            table_comumns.push_str(&",");
+            table_comumns.push_str(&", ");
             // if table_comumns.len() > 0 {
             //     table_comumns.push_str(",")
             // }
             //println!("row {}", i);
         }
         println!(
-            "table:{} columns: {}",
+            "table:{0}| select {1} from {0}",
             table_name,
-            table_comumns.trim_matches(',')
+            table_comumns.trim().trim_matches(',')
         );
     }
     // if let Ok(rows) = {
