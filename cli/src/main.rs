@@ -1,7 +1,8 @@
 use postgres::{Client, NoTls};
 
 fn main() {
-    let mut client = Client::connect("host=127.0.0.1 user=lipeng dbname=baseinfo_test", NoTls).unwrap();
+    let mut client =
+        Client::connect("host=127.0.0.1 user=lipeng dbname=baseinfo_test", NoTls).unwrap();
     println!("Hello, world!");
     // if let Ok(rows) = client.query("select * from dish order by id", &[]) {
     //     for row in rows {
@@ -9,15 +10,18 @@ fn main() {
     //         println!("row {}", i);
     //     }
     // }
-    
+
     let mut table_names: Vec<String> = Vec::new();
-    if let Ok(rows) = client.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'", &[]) {
+    if let Ok(rows) = client.query(
+        "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'",
+        &[],
+    ) {
         for row in rows {
             //let a: () = row.get(0);
             let i: &str = row.get(0);
             //println!("row {}", i);
             table_names.push(i.to_string());
-        } 
+        }
     }
     println!("table names: {:?}\n\n", table_names);
 
@@ -35,7 +39,11 @@ fn main() {
             // }
             //println!("row {}", i);
         }
-        println!("table:{} columns: {}", table_name, table_comumns.trim_matches(','));
+        println!(
+            "table:{} columns: {}",
+            table_name,
+            table_comumns.trim_matches(',')
+        );
     }
     // if let Ok(rows) = {
     //     for row in rows {
@@ -44,5 +52,4 @@ fn main() {
     //         println!("row {}", i);
     //     }
     // }
-    
 }
