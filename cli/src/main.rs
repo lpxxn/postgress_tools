@@ -45,6 +45,9 @@ fn main() {
             table_comumns.trim().trim_matches(',')
         );
     }
+
+    println!("TRUNCATE {};", table_names.join(","));
+
     // if let Ok(rows) = {
     //     for row in rows {
     //         //let a: () = row.get(0);
