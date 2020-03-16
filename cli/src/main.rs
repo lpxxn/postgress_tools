@@ -2,7 +2,9 @@ use postgres::{Client, NoTls};
 
 fn main() {
     let mut client =
-        Client::connect("host=127.0.0.1 user=lipeng dbname=baseinfo_test", NoTls).unwrap();
+        Client::connect("host=127.0.0.1 user=lipeng dbname=misc_test", NoTls).unwrap();
+        //Client::connect("host=127.0.0.1 user=lipeng dbname=userrelations_test", NoTls).unwrap();
+        //Client::connect("host=127.0.0.1 user=lipeng dbname=baseinfo_test", NoTls).unwrap();
     println!("Hello, world!");
     // if let Ok(rows) = client.query("select * from dish order by id", &[]) {
     //     for row in rows {
@@ -40,7 +42,7 @@ fn main() {
             //println!("row {}", i);
         }
         println!(
-            "table:{0}| select {1} from {0}",
+            "table:{0} | select {1} from {0}",
             table_name,
             table_comumns.trim().trim_matches(',')
         );
