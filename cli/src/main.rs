@@ -2,8 +2,8 @@ use postgres::{Client, NoTls};
 
 fn main() {
     let mut client =
-        Client::connect("host=127.0.0.1 user=lipeng dbname=misc_test", NoTls).unwrap();
-        //Client::connect("host=127.0.0.1 user=lipeng dbname=userrelations_test", NoTls).unwrap();
+        //Client::connect("host=127.0.0.1 user=lipeng dbname=misc_test", NoTls).unwrap();
+        Client::connect("host=127.0.0.1 user=lipeng dbname=userrelations_test", NoTls).unwrap();
         //Client::connect("host=127.0.0.1 user=lipeng dbname=baseinfo_test", NoTls).unwrap();
     println!("Hello, world!");
     // if let Ok(rows) = client.query("select * from dish order by id", &[]) {
@@ -26,7 +26,7 @@ fn main() {
         }
     }
     println!("table names: {:?}\n\n", table_names);
-
+    
     for table_name in &table_names {
         let mut table_comumns: String = String::new();
         let sql_str:String  = format!("SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{}'", table_name);
